@@ -5,10 +5,11 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 public class DynamicJson {
 	
-	@Test
+	@Test(dataProvider="BooksData")
 	public void addBook()
 	{
 		//Base url or Host
@@ -25,8 +26,12 @@ public class DynamicJson {
 		String id=js.get("ID");
 		System.out.println(id);
 		
+	}
+	
+	@DataProvider(name="BooksData")
+	public Object[][] getData()
+	{return new Object[][] {{"asdede","334"},{"ssdxdc","234"},{"ssqasds","12233"}};
 		
-		
-		  }
+	}
 
 }
