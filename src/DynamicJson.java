@@ -10,13 +10,13 @@ import org.testng.annotations.Test;
 public class DynamicJson {
 	
 	@Test(dataProvider="BooksData")
-	public void addBook()
+	public void addBook(String isbn,String asile)
 	{
 		//Base url or Host
 		RestAssured.baseURI="http://216.10.245.166";
 		Response res=given().
 				header("Content-Type","application/json").
-		   body(payload.Addbook("bibuiwc","234")).
+		   body(payload.Addbook(isbn,asile)).
 		   when().
 		   post("Library/Addbook.php").
 		   then().assertThat().statusCode(200).
